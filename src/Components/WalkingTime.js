@@ -39,8 +39,8 @@ export const WalkingTime = () => {
   const handleChangeTimeDist = () => {
     if (timeDist == "dist") {
       setTimeDist("time");
-      setTimeMin(3)
-      setTimeSec(30)
+      setTimeMin(4)
+      setTimeSec(46)
       setDist("0");
     } else {
       setTimeDist("dist");
@@ -51,7 +51,6 @@ export const WalkingTime = () => {
   };
 
   const handleRound = () => {
-    console.log(seconds);
     if (seconds > 0) {
       minutes++;
       seconds = 0;
