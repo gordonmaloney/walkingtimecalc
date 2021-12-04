@@ -14,7 +14,7 @@ export const WalkingTime = () => {
   const [feet, setFeet] = useState("feet");
   const [timeDist, setTimeDist] = useState("dist");
 
-  let totalSeconds = (((dist * 2) / pace) || 0) + ((timeMin*60) || 0) + (timeSec || 0) + (parseInt(vehicle) || 0) + (parseInt(allowedTime) || 0) + (parseInt(extra) || 0)
+  let totalSeconds = (((parseInt(dist) * 2) / (parseInt(pace) || 1)) || 0) + ((parseInt(timeMin)*60) || 0) + (parseInt(timeSec) || 0) + (parseInt(vehicle) || 0) + (parseInt(allowedTime) || 0) + (parseInt(extra) || 0)
   let minutes = Math.floor(totalSeconds / 60);
   let seconds = Math.round(totalSeconds - minutes * 60);
 
