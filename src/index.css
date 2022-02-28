@@ -1,21 +1,18 @@
 body {
+  background-color: #f4f4f4;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'NeueHaasGrotesk';
+  src: local('NeueHaasGrotesk'), url("./Fonts/NHaasGroteskTXPro-65Md.ttf") format('truetype');
 }
-
 
 .label {
   font-size: large;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   padding: 0
 }
 

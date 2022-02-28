@@ -6,6 +6,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { InputLabel, Input } from "@mui/material";
+import { Box } from "@mui/system";
 
 export const WalkingTime = () => {
   const [pace, setPace] = useState(3.5);
@@ -76,8 +77,8 @@ export const WalkingTime = () => {
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <Grid container columnSpacing="12">
+    <div style={{ textAlign: "center", paddingLeft: "10%", paddingRight: "10%" }}>
+      <Grid container columnSpacing="12" sx={{borderBottom: "5px #1d1737 solid"}}>
         <Grid item xs="12">
           <p>
             This tool calculates needed layover or schedule flexibility for
@@ -93,13 +94,11 @@ export const WalkingTime = () => {
           </p>
         </Grid>
 
-        <Grid item xs="12" sm="6">
-          <h2>Distance to and from nearest toilet</h2>
-
+        <Grid item xs="12" md="6" sx={{backgroundColor: "white", paddingBottom: "20px"}}>
           {timeDist == "dist" && (
             <>
               <p className="label">
-                Walking speed = {Math.round(pace * 100) / 100} {feet}/second
+                Walking speed: {Math.round(pace * 100) / 100} {feet}/second
               </p>
               <p className="helperText"></p>
               <FormControl>
@@ -122,7 +121,7 @@ export const WalkingTime = () => {
               </FormControl>
               <br /> <br />
               <p className="label">
-                Distance each way = {Math.round(dist * 100) / 100} {feet}
+                Distance each way: {Math.round(dist * 100) / 100} {feet}
               </p>
               <FormControl>
                 <InputLabel>Change distance</InputLabel>
@@ -142,6 +141,14 @@ export const WalkingTime = () => {
               <Button
                 variant="contained"
                 size="small"
+                sx={{
+                  backgroundColor: "#1d1737",
+                  color: "#fa501e",
+                  "&:hover": {
+                    backgroundColor: "#fa501e",
+                    color: "#1d1737",
+                  },
+                }}
                 onClick={() => handleChangeFeet()}
               >
                 Change to {feet == "feet" ? "meters" : "feet"}
@@ -152,7 +159,7 @@ export const WalkingTime = () => {
           {timeDist == "time" && (
             <>
               <p className="label">
-                Time = {timeMin} minutes, {timeSec} seconds
+                Time: {timeMin} minutes, {timeSec} seconds
               </p>
               <FormControl>
                 <InputLabel>Minutes</InputLabel>
@@ -205,15 +212,22 @@ export const WalkingTime = () => {
           <Button
             variant="contained"
             size="small"
+            sx={{
+              backgroundColor: "#1d1737",
+              color: "#fa501e",
+              "&:hover": {
+                backgroundColor: "#fa501e",
+                color: "#1d1737",
+              },
+            }}
             onClick={() => handleChangeTimeDist()}
           >
             Change to {timeDist == "dist" ? "time" : "distance and pace"}
           </Button>
         </Grid>
 
-        <Grid item xs="12" sm="6">
-          <h2>Extra time</h2>
-          <p className="label">Time to secure vehicle = {vehicle} seconds</p>
+        <Grid item xs="12" md="6" sx={{backgroundColor: "white", paddingBottom: "20px"}}>
+          <p className="label">Time to secure vehicle: {vehicle} seconds</p>
           <FormControl>
             <InputLabel>Change time</InputLabel>
             <Input
@@ -228,44 +242,57 @@ export const WalkingTime = () => {
           </FormControl>
           <br /> <br />
           <p className="label">
-            Time allowed to use bathroom = {allowedTime} seconds
+            Time to use bathroom: {allowedTime} seconds
           </p>
           <FormControl>
             <InputLabel>Change time</InputLabel>
             <Input
-            min="1"
-            type="number"
-            placeholder="Time to use bathroom"
-            onChange={(e) => setAllowedTime(e.target.value)}
-            endAdornment={
-              <InputAdornment position="end">seconds</InputAdornment>
-            }
-          />
-        </FormControl>
+              min="1"
+              type="number"
+              placeholder="Time to use bathroom"
+              onChange={(e) => setAllowedTime(e.target.value)}
+              endAdornment={
+                <InputAdornment position="end">seconds</InputAdornment>
+              }
+            />
+          </FormControl>
           <br /> <br />
-          <p className="label">Extra time = {extra} seconds</p>
+          <p className="label">Extra time: {extra} seconds</p>
           <FormControl>
             <InputLabel>Change time</InputLabel>
             <Input
-            min="0"
-            type="number"
-            placeholder="Extra time"
-            onChange={(e) => setExtra(e.target.value)}
-            endAdornment={
-              <InputAdornment position="end">seconds</InputAdornment>
-            }
-          />
-          <FormHelperText>
-          Any other extra time necessary
-          </FormHelperText>
-        </FormControl>
+              min="0"
+              type="number"
+              placeholder="Extra time"
+              onChange={(e) => setExtra(e.target.value)}
+              endAdornment={
+                <InputAdornment position="end">seconds</InputAdornment>
+              }
+            />
+            <FormHelperText>Any other extra time necessary</FormHelperText>
+          </FormControl>
         </Grid>
       </Grid>
 
+      <br />
       <h3>Total walking time = {total}</h3>
-      <Button variant="contained" size="large" onClick={() => handleRound()}>
+      <Button
+        sx={{
+          backgroundColor: "#1d1737",
+          color: "#fa501e",
+          "&:hover": {
+            backgroundColor: "#fa501e",
+            color: "#1d1737",
+          },
+        }}
+        variant="contained"
+        size="small"
+        onClick={() => handleRound()}
+      >
         Round up
       </Button>
+
+      <br /><br /><br /><br />
     </div>
   );
 };
